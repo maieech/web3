@@ -8,9 +8,14 @@
 }
 
 .--isDeleted {
-  color: var(--color3);
-  transition: color 0.5s ease;
-  
+  a {
+    &:active,
+    &:hover,
+    &:visited {
+      color: var(--color3);
+      transition: color 0.5s ease;
+    }
+  }
   button {
     display: none;
   }

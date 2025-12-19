@@ -66,9 +66,11 @@ export const addRandomStudentsDb = async (amount: number = 10): Promise<StudentI
     const newStudent = await addStudentDb({
       ...fio,
       contacts: 'contact',
-      groupId: 1,
+      groupId: Math.floor(Math.random() * 4) + 1,
     });
     students.push(newStudent);
+
+    console.log(newStudent);
   }
 
   return students;
