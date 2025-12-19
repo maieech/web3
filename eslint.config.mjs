@@ -89,7 +89,7 @@ const eslintConfig = [
             delimiter: 'semi',
             requireLast: false,
           },
-          multilineDetection: 'brackets',
+          // multilineDetection: 'brackets',
         },
       ],
     },

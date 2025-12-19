@@ -1,6 +1,7 @@
 import AppDataSource from '@/db/AppDataSource';
 import { Group } from '@/db/entity/Group.entity';
 import type GroupInterface from '@/types/GroupInterface';
+
 export class GroupService {
   private get repository(): ReturnType<typeof AppDataSource.getRepository> {
     return AppDataSource.getRepository(Group);
@@ -9,6 +10,11 @@ export class GroupService {
   async getGroups(): Promise<GroupInterface[]> {
     const groups = await this.repository.find({ relations: ['students'] });
     return groups as GroupInterface[];
+  }
+
+  async getGroupsById(id: number): Promise<GroupInterface> {
+    const groups = await this.repository.findOne({ relations: ['students'], where: { id } });
+    return groups as GroupInterface;
   }
 
   async addGroup(groupFields: Omit<GroupInterface, 'id'>): Promise<GroupInterface> {

@@ -1,5 +1,6 @@
 import type GroupInterface from '@/types/GroupInterface';
-import { groupService } from '@/services/GroupService';
+import { Group } from '@/db/entity/Group.entity';
+import AppDataSource from '@/db/AppDataSource';
 
 const defaultGroups: GroupInterface[] = [
   {
@@ -25,22 +26,22 @@ const defaultGroups: GroupInterface[] = [
 ];
 
 export async function GET(): Promise<Response> {
+  const repository = AppDataSource.getRepository(Group);
   const newGroups: GroupInterface[] = [];
-  const existGroups: GroupInterface[] = [];
 
   await Promise.all(defaultGroups.map(async (group) => {
-    const exists: GroupInterface = await groupService.getGroupsById(group.id);
+    const exists = await repository.findOne({
+      where: { id: group.id },
+    });
+
     if (!exists) {
-      const newGroup: GroupInterface = await groupService.addGroup(group);
+      const newGroup: GroupInterface = await repository.save(repository.create(group));
       newGroups.push(newGroup);
-    } else {
-      existGroups.push(exists);
     }
   }));
 
   return new Response(JSON.stringify({
     newGroups,
-    existGroups,
   }), {
     status: 201,
     headers: {
