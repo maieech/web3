@@ -6,7 +6,7 @@ export class Student {
   id!: number;
 
   @Column({ default: '' })
-  uuid!: string;
+  uuid?: string;
 
   @Column()
   firstName!: string;
@@ -18,7 +18,7 @@ export class Student {
   middleName!: string;
 
   @Column({ default: '' })
-  contacts!: string;
+  contacts?: string;
 
   @Column()
   groupId!: number;
