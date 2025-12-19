@@ -13,10 +13,8 @@
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-hook-form": "^7.63.0",
     "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7",
-    "yup": "^1.7.0"
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

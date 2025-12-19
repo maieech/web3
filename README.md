@@ -39,12 +39,8 @@ http://localhost:3000/api/groups - апи
 2) Скопировать базу данных и ./db/vki-web.db в G:\db\vki-web.db
 
 ## Файловый раутинг Next.js - работает из папки src/app
-### Backend API - route.ts
-![file-route-api](docs/pics/file-route-api.png)
-![file-route-api2](docs/pics/file-route-api2.png)
-### Frontent Page - page.tsx
-![file-route-pages](docs/pics/file-route-page.png)
 
+[читать по ссылке](docs/next-routing.md)
 
 
 ## Назначение файлов
@@ -67,52 +63,14 @@ s
 ## Работа с данными
 ![data](docs/pics/data.png)
 
-## TanStackQuery - работа с данными в приложении
-### Загрузка данных из апи - [src/api/groupsApi.ts](src/api/groupsApi.ts)
-### Загрузка данных в TanStackQuery - [src/app/layout.tsx](src/app/layout.tsx)
-```
-  // выполняется на сервере - загрузка групп
-  let groups: GroupInterface[];
-  await queryClient.prefetchQuery({
-    queryKey: ['groups'],
-    queryFn: async () => {
-      groups = await getGroupsApi();
-      console.log('Groups', groups);
-      return groups;
-    },
-  });
-```
-### Хук работы с данными - [src/hooks/useStudents.ts](src/hooks/useStudents.ts)
-### Использование хука для вывода данных и других операций - [src/components/Groups/Groups.tsx](src/components/Groups/Groups.tsx)
-```
-const Groups = (): React.ReactElement => {
-  const { groups } = useGroups();
 
-  return (
-    <div className={styles.Groups}>
-      {groups.map((group: GroupInterface) => (
-        <h2 key={group.id}>
-          {group.name}
-        </h2>
-      ))}
-    </div>
-  );
-};
-```
+## Инструменты
+- ### [TanStackQuery - работа с данными в приложении](docs/tanstack-query.md)
+- ### [БД SQLite](docs/db.md)
+- ### [HTTP запросы](docs/http.md)
+- ### [GIT](docs/git.md)
 
-## ReactQueryDevtools
 
-![tanstack1](docs/pics/tanstack1.png)
-![tanstack1](docs/pics/tanstack2.png)
-
-## [Работа с БД SQLite](docs/database-extension.md)
-[читать по ссылке](docs/database-extension.md)
-
-## Git
-```
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
 
 ## Ссылки
 
