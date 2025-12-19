@@ -14,14 +14,26 @@ const Students = (): React.ReactElement => {
     addStudentMutate,
   } = useStudents();
 
+  /**
+   * Удаление студента - обработчик события нажатия "удалить"
+   * @param studentId Ид студента
+   */
   const onDeleteHandler = (studentId: number): void => {
     if (confirm('Удалить студента?')) {
+      console.log('onDeleteHandler', studentId);
+      debugger;
+
       deleteStudentMutate(studentId);
     }
   };
 
+  /**
+   * Добавления студента - обработчик события нажатия "добавить"
+   * @param studentFormField Форма студента
+   */
   const onAddHandler = (studentFormField: FormFields): void => {
     console.log('Добавление студента', studentFormField);
+    debugger;
 
     addStudentMutate({
       id: -1,
