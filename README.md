@@ -1,3 +1,23 @@
+## Установка 
+
+склонировать проект на диск c: в личную папку
+
+открыть в VSCode
+
+В терминале VSCode выполнить:
+```
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+Запустить проект:
+
+```
+npm run dev
+```
+
+
+### Документы
+
 https://nextjs.org/docs/app/api-reference/file-conventions/route
 
 
