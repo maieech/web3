@@ -1,4 +1,6 @@
-# Знакомство со стеком React, Next.js, TanStack Query, SQLite
+# Знакомство со стеком React, Next.js, TanStackQuery, SQLite, TypeORM
+
+### [План курса и критерии оценок](docs/plan.md)
 
 ## Установка 
 
