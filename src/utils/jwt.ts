@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import crypto from 'node:crypto';
 
 type JwtPayload = Record<string, unknown>;
@@ -11,7 +12,8 @@ const base64UrlEncode = (input: Buffer | string): string => {
 };
 
 const getJwtSecret = (): string => {
-  const secret = process.env.JWT_SECRET;
+  // const secret = process.env.JWT_SECRET;
+  const secret = 'secret';
 
   if (!secret) {
     throw new Error('JWT_SECRET is not set');
@@ -50,3 +52,15 @@ export const signJwt = (payload: JwtPayload, expiresInSeconds: number = 60 * 60)
   return `${data}.${signature}`;
 };
 
+// Валидация access token
+export const verifyAccessToken = (token?: string): any => {
+  if (!token) {
+    return null;
+  }
+  try {
+    return jwt.verify(token, getJwtSecret());
+  }
+  catch (error) {
+    return null;
+  }
+}

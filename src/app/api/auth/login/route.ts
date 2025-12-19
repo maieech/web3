@@ -39,7 +39,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
     response.cookies.set({
-      name: 'vki-token',
+      name: 'accessToken',
       value: token,
       httpOnly: true,
       sameSite: 'lax',
@@ -58,4 +58,3 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     );
   }
 }
-

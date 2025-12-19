@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './LoginForm.module.scss';
+import { useAuth } from '@/hooks/useAuth';
 
 type LoginFormValues = {
   email: string;
@@ -10,6 +11,10 @@ type LoginFormValues = {
 };
 
 const LoginForm = (): ReactNode => {
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const { setUser } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -21,8 +26,6 @@ const LoginForm = (): ReactNode => {
     },
   });
 
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
   const onSubmit = async (values: LoginFormValues): Promise<void> => {
     setError(null);
@@ -37,11 +40,13 @@ const LoginForm = (): ReactNode => {
 
       const data = await response.json();
 
+      setUser(data.user);
+
       if (!response.ok) {
         throw new Error(data?.message ?? 'Ошибка авторизации');
       }
 
-      window.localStorage.setItem('vki-token', data.token);
+      window.localStorage.setItem('accessToken', data.token);
       setSuccess('Авторизация успешна! Токен сохранён в localStorage.');
     }
     catch (submitError) {
@@ -91,7 +96,7 @@ const LoginForm = (): ReactNode => {
         </button>
         <p className={styles.hint}>
           После успешной авторизации токен сохраняется в localStorage по ключу
-          <code>vki-token</code>
+          <code>accessToken</code>
           .
         </p>
       </div>
