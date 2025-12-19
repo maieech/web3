@@ -59,7 +59,7 @@ http://localhost:3000/api/groups - апи
 - API возвращает список групп - [src/app/groups/route.ts](src/app/groups/route.ts)
 - Запрос к БД - [src/db/groupDb.ts](src/db/groupDb.ts)
 - Стартовая БД и запросы - папка db в корне проекта
-s
+
 ## Работа с данными
 ![data](docs/pics/data.png)
 
