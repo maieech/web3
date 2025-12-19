@@ -38,46 +38,81 @@ http://localhost:3000/api/groups - апи
     ```
 2) Скопировать базу данных и ./db/vki-web.db в G:\db\vki-web.db
 
+## Файловый раутинг Next.js - работает из папки src/app
+### Backend API - route.ts
+![file-route-api](docs/pics/file-route-api.png)
+![file-route-api2](docs/pics/file-route-api2.png)
+### Frontent Page - page.tsx
+![file-route-pages](docs/pics/file-route-page.png)
+
+
+
 ## Назначение файлов
 
-### Приложение
+### Приложение - Frontend
 
-- Главный шаблон (точка входа) - src/app/layout.tsx 
-- Компоненты шаблона - src/app/components/layout
-- Страница - src/app/groups/page.tsx
-- Компонент - src/components/Groups/Groups.tsx
-- Хук получения данных - src/hooks/useGroups.tsx
-- Получение данных из API - src/api/groupsApi.ts
+- Главный шаблон (точка входа) - [src/app/layout.tsx](src/app/layout.tsx)
+- Компоненты шаблона - [src/app/components/layout](src/app/components/layout)
+- Страница - [src/app/groups/page.tsx](src/app/groups/page.tsx)
+- Компонент - [src/components/Groups/Groups.tsx](src/components/Groups/Groups.tsx)
+- Хук получения данных - [src/hooks/useGroups.tsx](src/hooks/useGroups.tsx)
+- Получение данных из API - [src/api/groupsApi.ts](src/api/groupsApi.ts)
 
-### API
+### API - Backend
 
-- API возвращает список групп - src/app/groups/route.ts
-- Запрос к БД - src/db/groupDb.ts
+- API возвращает список групп - [src/app/groups/route.ts](src/app/groups/route.ts)
+- Запрос к БД - [src/db/groupDb.ts](src/db/groupDb.ts)
 - Стартовая БД и запросы - папка db в корне проекта
-
+s
 ## Работа с данными
 ![data](docs/pics/data.png)
 
-## Работа с данными в приложении TanStack Query
+## TanStackQuery - работа с данными в приложении
+### Загрузка данных из апи - [src/api/groupsApi.ts](src/api/groupsApi.ts)
+### Загрузка данных в TanStackQuery - [src/app/layout.tsx](src/app/layout.tsx)
+```
+  // выполняется на сервере - загрузка групп
+  let groups: GroupInterface[];
+  await queryClient.prefetchQuery({
+    queryKey: ['groups'],
+    queryFn: async () => {
+      groups = await getGroupsApi();
+      console.log('Groups', groups);
+      return groups;
+    },
+  });
+```
+### Хук работы с данными - [src/hooks/useStudents.ts](src/hooks/useStudents.ts)
+### Использование хука для вывода данных и других операций - [src/components/Groups/Groups.tsx](src/components/Groups/Groups.tsx)
+```
+const Groups = (): React.ReactElement => {
+  const { groups } = useGroups();
+
+  return (
+    <div className={styles.Groups}>
+      {groups.map((group: GroupInterface) => (
+        <h2 key={group.id}>
+          {group.name}
+        </h2>
+      ))}
+    </div>
+  );
+};
+```
+
+## ReactQueryDevtools
 
 ![tanstack1](docs/pics/tanstack1.png)
 ![tanstack1](docs/pics/tanstack2.png)
 
-## Работа с БД SQLite
+## [Работа с БД SQLite](docs/database-extension.md)
+[читать по ссылке](docs/database-extension.md)
 
-### Установить плагин
-
-![database-client](docs/pics/database-client.png)
-
-### Подключение к БД
-
-![db-connect](docs/pics/db-connect.png)
-
-### Выполнение запроса
-
-![sql1](docs/pics/sql1.png)
-![sql2](docs/pics/sql2.png)
-![sql3](docs/pics/sql3.png)
+## Git
+```
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
 
 ## Ссылки
 
