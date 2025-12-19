@@ -1,10 +1,8 @@
-import GroupInterface from '@/types/GroupInterface';
-import { getGroupsApi } from '@/api/groupApi';
-
+import { getGroupsDb } from '@/db/groupDb';
 
 export async function GET() {
 
-  const groups = getGroupsApi() as GroupInterface[];
+  const groups = getGroupsDb();
 
   return new Response(JSON.stringify(groups), {
     headers: {
