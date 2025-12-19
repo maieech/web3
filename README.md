@@ -55,6 +55,11 @@ http://localhost:3000/api/groups - апи
 - Запрос к БД - src/db/groupDb.ts
 - Стартовая БД и запросы - папка db в корне проекта
 
+## Работа с данными в приложении TanStack Query
+
+![tanstack1](docs/pics/tanstack1.png)
+![tanstack1](docs/pics/tanstack2.png)
+
 ## Работа с БД SQLite
 
 ### Установить плагин
