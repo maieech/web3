@@ -1,6 +1,8 @@
+# Урок 2 - Знакомство со стеком React, Next.js, TanStack Query
+
 ## Установка 
 
-склонировать проект на диск c: в личную папку
+Склонировать проект на диск С: в личную папку (на диске G: проект не развернется)
 
 открыть в VSCode
 
@@ -22,45 +24,46 @@ npm i
 npm run dev
 ```
 
+### Открыть в браезере две вкладки
 
-### Документы
+http://localhost:3000/ - приложение
 
-https://nextjs.org/docs/app/api-reference/file-conventions/route
+http://localhost:3000/api/groups - апи
 
+### Открыть в VSCode
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+src/app/layout.tsx - точка входа
 
-## Getting Started
+src/api/groupsApi.ts - обращение к API
 
-First, run the development server:
+src/app/groups/route.ts - API возвращает список групп
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Задача 1 - реализация GET запроса
+
+src/api/groupsApi.ts - обращение к API
+
+```
+  /* TODO: groupsApi должен возвращать данные через апи,
+    не должно быть обращение в БД напрямую
+  */
+  const groups = getGroupsDb();
+
+  /* TODO: реализовать получение данных через апи
+   http://localhost:3000/api/groups используя fetch
+   */
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Задача 2
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Добавать страницу students по аналогии с главной
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
+## Ссылки
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+  
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- TanStackQuery - https://tanstack.com/query/latest
 
-## Deploy on Vercel
+- https://nextjs.org/docs/app/api-reference/file-conventions/route
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

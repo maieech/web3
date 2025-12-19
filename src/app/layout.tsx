@@ -1,14 +1,14 @@
+import type { Metadata } from 'next';
+
 import { Geist, Geist_Mono } from 'next/font/google';
 import { dehydrate } from '@tanstack/react-query';
 
 import TanStackQuery from '@/containers/TanStackQuery';
 import queryClient from '@/api/reactQueryClient';
-import { getGroupsApi } from '@/api/groupApi';
-
-import type { Metadata } from 'next';
+import { getGroupsApi } from '@/api/groupsApi';
 
 import '@/styles/globals.scss';
-// eslint-disable-next-line import/order
+
 import GroupInterface from '@/types/GroupInterface';
 import Header from '@/components/layout/Header/Header';
 import Footer from '@/components/layout/Footer/Footer';
@@ -48,9 +48,9 @@ const RootLayout = async ({ children }: Readonly<{children: React.ReactNode}>) =
       <html lang="ru">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <Header />
-            <main>
-              {children}
-            </main>
+          <main>
+            {children}
+          </main>
           <Footer />
         </body>
       </html>
