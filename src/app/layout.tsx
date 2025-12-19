@@ -1,19 +1,16 @@
-import type { Metadata } from 'next';
-
-// import { Geist, Geist_Mono } from 'next/font/google';
 import { dehydrate } from '@tanstack/react-query';
 
 import TanStackQuery from '@/containers/TanStackQuery';
 import queryClient from '@/api/reactQueryClient';
 import { getGroupsApi } from '@/api/groupsApi';
-
-import '@/styles/globals.scss';
-
 import GroupInterface from '@/types/GroupInterface';
 import Header from '@/components/layout/Header/Header';
 import Footer from '@/components/layout/Footer/Footer';
 import Main from '@/components/layout/Main/Main';
 
+import type { Metadata } from 'next';
+
+import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
   title: 'Вэб разработка ВКИ - Next.js шаблон',

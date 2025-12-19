@@ -1,8 +1,6 @@
-import { JSX } from 'react';
-
 import styles from './Footer.module.scss';
 
-const Header = (): JSX.Element => (
+const Header = (): React.ReactElement => (
   <footer className={styles.Footer}>
     © {(new Date()).getFullYear()} Высший колледж информатики НГУ
   </footer>

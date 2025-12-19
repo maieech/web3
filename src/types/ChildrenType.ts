@@ -1,5 +1,5 @@
 import { JSX } from 'react';
 
-type ChildrenType = JSX.Element[] | JSX.Element | string | (JSX.Element | string)[];
+type ChildrenType = React.ReactElement[] | React.ReactElement | string | (React.ReactElement | string)[];
 
 export default ChildrenType;

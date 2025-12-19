@@ -1,6 +1,3 @@
-
-import { JSX } from 'react';
-
 import ChildrenType from '@/types/ChildrenType';
 
 import styles from './Page.module.scss';
@@ -9,7 +6,7 @@ interface Props {
   children?: ChildrenType;
 }
 
-const Page = ({ children }: Props): JSX.Element => (
+const Page = ({ children }: Props): React.ReactElement => (
   <div className={styles.main}>
     {children}
   </div>
