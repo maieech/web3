@@ -57,6 +57,12 @@ src/api/groupsApi.ts - обращение к API
 
 Добавить страницу groups по аналогии с главной
 
+Добавить страницу students по аналогии с groups, добавить ссылку в меню
+
+### Задача 3
+
+Добавить api/students по аналогии с api/groups
+
 ## Ссылки
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
