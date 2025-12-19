@@ -1,20 +1,12 @@
 import GroupInterface from '@/types/GroupInterface';
-
-const students: GroupInterface[] =  [
-  {
-    name: '1111',
-  },
-  {
-    name: '2222',
-  }
-];
+import { getGroupsApi } from '@/api/groupApi';
 
 
 export async function GET() {
 
-  // TODO: получить данные через SQL запрос к базе данных
+  const groups = getGroupsApi() as GroupInterface[];
 
-  return new Response(JSON.stringify(students), {
+  return new Response(JSON.stringify(groups), {
     headers: {
       'Content-Type': 'application/json'
     },

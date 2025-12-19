@@ -3,9 +3,15 @@ import { dehydrate } from '@tanstack/react-query';
 
 import TanStackQuery from '@/containers/TanStackQuery';
 import queryClient from '@/api/reactQueryClient';
+import { getGroupsApi } from '@/api/groupApi';
 
 import type { Metadata } from 'next';
+
 import '@/styles/globals.scss';
+// eslint-disable-next-line import/order
+import GroupInterface from '@/types/GroupInterface';
+import Header from '@/components/layout/Header/Header';
+import Footer from '@/components/layout/Footer/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -23,28 +29,32 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = async ({ children }: Readonly<{children: React.ReactNode}>) => {  
-  // let stations: StationsInterface;
+  let groups: GroupInterface[];
 
-  // выполняется на сервере - загрузка станций
-  // await queryClient.prefetchQuery({
-  //   queryKey: ['stations'], 
-  //   queryFn: async () => {
-  //     stations = await getStations(0, 100);
-  //     console.log('Stations', stations);
-  //     return stations;
-  //   }
-  // });
+  // выполняется на сервере - загрузка групп
+  await queryClient.prefetchQuery({
+    queryKey: ['groups'], 
+    queryFn: async () => {
+      groups = await getGroupsApi();
+      console.log('Groups', groups);
+      return groups;
+    }
+  });
 
   const state = dehydrate(queryClient, { shouldDehydrateQuery: () => true });
 
   return (
-    <html lang="ru">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <TanStackQuery state={state}>
-          {children}
-        </TanStackQuery>
-      </body>
-    </html>
+    <TanStackQuery state={state}>
+      <html lang="ru">
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <Header />
+            <main>
+              {children}
+            </main>
+          <Footer />
+        </body>
+      </html>
+    </TanStackQuery>
   );
 };
 
