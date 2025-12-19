@@ -55,7 +55,12 @@ export default [
       "@stylistic/quotes": ["error", "single", { avoidEscape: true }],
       "@stylistic/object-curly-spacing": ["error", "always"],
       "@stylistic/array-bracket-spacing": ["error", "never"],
-      "@stylistic/space-before-function-paren": ["error", "never"],  // consistent with airbnb style guide
+      // "@stylistic/space-before-function-paren": ["error", {
+      //   "anonymous": "always",
+      //   "named": "always",
+      //   // "asyncArrow": "never",
+      //   "catch": "always"
+      // }],  // consistent with airbnb style guide
 
       // React specific rules
       "react/jsx-uses-react": "off",
@@ -68,12 +73,6 @@ export default [
       // Possible Errors
       "no-console": "off", //  or "error" depending on your preference
 
-      "space-before-function-paren": ["error", {
-        "anonymous": "always",
-        "named": "always",
-        "asyncArrow": "off",
-        "catch": "always"
-      }],
 
       // Best Practices
       eqeqeq: "error", // Enforce strict equality === and !==
@@ -81,6 +80,7 @@ export default [
       "no-shadow": "off", // Typescript handles shadowing better.
       "@typescript-eslint/no-shadow": "error", //  Enable shadowing rules.
       "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/triple-slash-reference": "off",
 
       // TypeScript specific rules
       "@typescript-eslint/consistent-type-imports": [
@@ -122,77 +122,3 @@ export default [
     },
   },
 ];
-
-
-
-// import { dirname } from 'path';
-// import { fileURLToPath } from 'url';
-
-// import { FlatCompat } from '@eslint/eslintrc';
-// import stylistic from '@stylistic/eslint-plugin';
-
-// // eslint.config.js
-// import stylistic from '@stylistic/eslint-plugin'
-
-// export default [
-//   stylistic.configs.recommended,
-//   // ...your other config items
-// ]
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-
-// const compat = new FlatCompat({
-//   baseDirectory: __dirname,
-//   recommendedConfig: {},
-// });
-
-// const eslintConfig = [
-//   ...compat.extends(
-//     'next/core-web-vitals',
-//     'next/typescript',
-//     'plugin:@typescript-eslint/recommended',
-//     'plugin:react/recommended',
-//     'eslint:recommended',
-//   ),
-//   ...compat.config({
-
-//     env: {
-//       'browser': true,
-//       'es2021': true,
-//       'node': true
-//     },
-
-//     plugins: {
-//       // 'react',
-//       // '@typescript-eslint',
-//       '@stylistic': stylistic,
-//     },
-
-//     rules: {
-//       '@stylistic/indent': ['warn', 2],
-//       '@stylistic/quotes': ['warn', 'single'],
-//       '@stylistic/semi': ['warn', 'always'],
-//       '@stylistic/comma-spacing': ['warn', { before: false, after: true }],
-//       '@stylistic/import/order': [
-//         'warn',
-//         {
-//           'newlines-between': 'always',
-//           groups: [
-//             'builtin',
-//             'external',
-//             'internal',
-//             'parent',
-//             'sibling',
-//             'index',
-//             'object',
-//             'type',
-//           ],
-//         },
-//       ],
-//       'react/react-in-jsx-scope': 'off'
-//     }
-//   }),
-// ];
-
-// export default eslintConfig;

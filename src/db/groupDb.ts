@@ -1,32 +1,34 @@
-// import sqlite3 from 'sqlite3';
+import sqlite3 from 'sqlite3';
 
 import type GroupInterface from '@/types/GroupInterface';
 
-// sqlite3.verbose();
+sqlite3.verbose();
 
-// const db = new sqlite3.Database('./db/vki-web.db');
+export const getGroupsDb = async (): Promise<GroupInterface[]> => {
+  const db = new sqlite3.Database(process.env.DB ?? './db/vki-web.db');
 
-export const getGroupsDb = (): GroupInterface[] => {
-  // db.serialize(() => {
+  const groups = await new Promise((resolve, reject) => {
+    const sql = 'SELECT * FROM class';
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        reject(err);
+        db.close();
+        return;
+      }
+      resolve(rows);
+      db.close();
+    });
+  });
 
-  //   const groups = db.each('SELECT * FROM class', (err, row) => {
-  //     if (err) {
-  //       console.error(err);
-  //     } else {
-  //       console.log(row);
-  //     }
-  //   });
+  // test data
+  // const groups: GroupInterface[] = [
+  //   {
+  //     name: '2207 д2',
+  //   },
+  //   {
+  //     name: '2207 д2',
+  //   },
+  // ];
 
-  // });
-
-  const groups: GroupInterface[] = [
-    {
-      name: '2207 д2',
-    },
-    {
-      name: '2207 д2',
-    },
-  ];
-
-  return groups;
+  return groups as GroupInterface[];
 };

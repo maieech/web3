@@ -17,14 +17,13 @@ export const metadata: Metadata = {
   description: 'Шаблон для веб-разработки с использованием Next.js, React Hook Form, Yup, SCSS, Eslint, TanStack Query (React Query)',
 };
 
-const RootLayout = async({ children }: Readonly<{ children: React.ReactNode }>): Promise<React.ReactElement> => {
+const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>): Promise<React.ReactElement> => {
   let groups: GroupInterface[];
 
   // выполняется на сервере - загрузка групп
   await queryClient.prefetchQuery({
     queryKey: ['groups'],
-    queryFn: async() => {
-      // eslint-disable-next-line @typescript-eslint/await-thenable
+    queryFn: async () => {
       groups = await getGroupsApi();
       console.log('Groups', groups);
       return groups;
