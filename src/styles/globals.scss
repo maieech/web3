@@ -1,3 +1,5 @@
+@use './main';
+
 :root {  
   --color: #272727;
   --color2: #FFF;
@@ -15,7 +17,6 @@
     // --background3: #BABABA;
   }
 }
-
 
 @font-face {
   font-family: 'PTSans';
@@ -56,4 +57,61 @@ body {
   font-family: PTSans;
   color: var(--color);
   background-color: var(--background);
+  font-size: 16px;
+
+  // @media #{main.$mob} {
+  //   font-size: main.vwMax(14px);
+  // }
 }
+
+@mixin commons {
+  font-family: PTSans;  
+  color: var(--item-color);
+  font-weight: 500;
+}
+
+h1 {
+  @include commons;
+  font-size: 42px;
+  font-weight: bold;
+  color: var(--current-color);
+
+  // @media #{main.$mob} {
+  //   font-size: main.vwMax(24px);
+  // }
+}
+
+h2 {
+  @include commons;
+  font-size: 32px;
+  font-weight: bold;
+
+  // @media #{main.$mob} {
+  //   font-size: main.vwMax(20px);
+  // }
+}
+
+h3 {
+  @include commons;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--link-color);
+
+  // @media #{main.$mob} {
+  //   font-size: main.vwMax(18px);
+  // }
+}
+
+
+h4 {
+  @include commons;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--link-color);
+
+  // @media #{main.$mob} {
+  //   font-size: main.vwMax(18px);
+  // }
+}
+
+
