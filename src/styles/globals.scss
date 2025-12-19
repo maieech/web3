@@ -116,4 +116,11 @@ h4 {
   // }
 }
 
-
+a {
+    &:link {
+    color: var(--color);
+  }
+  &:visited {
+    color: var(--color);
+  }
+}
