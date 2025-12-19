@@ -39,6 +39,7 @@ const eslintConfig = [
       '@stylistic/quotes': ['warn', 'single', { avoidEscape: true }],
       '@stylistic/object-curly-spacing': ['error', 'always'],
       '@stylistic/array-bracket-spacing': ['error', 'never'],
+      '@stylistic/brace-style': ['off'],
       // "@stylistic/space-before-function-paren": ["error", {
       //   "anonymous": "always",
       //   "named": "always",

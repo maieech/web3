@@ -1,47 +1,41 @@
-import type GroupInterface from '@/types/GroupInterface';
-import { Group } from '@/db/entity/Group.entity';
+import { hashPassword } from '@/utils/password';
+import { User } from '@/db/entity/User.entity';
 import AppDataSource from '@/db/AppDataSource';
 
-const defaultGroups: GroupInterface[] = [
+const defaultUsers = [
   {
-    id: 1,
-    name: 'Group-1',
-    contacts: 'group1@test.test',
+    email: 'admin@example.com',
+    fullName: 'Администратор Системы',
+    password: hashPassword('admin123'),
   },
   {
-    id: 2,
-    name: 'Group-2',
-    contacts: 'group2@test.test',
-  },
-  {
-    id: 3,
-    name: 'Group-3',
-    contacts: 'group3@test.test',
-  },
-  {
-    id: 4,
-    name: 'Group-4',
-    contacts: 'group4@test.test',
+    email: 'manager@example.com',
+    fullName: 'Менеджер Учебного Отдела',
+    password: hashPassword('manager123'),
   },
 ];
 
 export async function GET(): Promise<Response> {
-  const repository = AppDataSource.getRepository(Group);
-  const newGroups: GroupInterface[] = [];
+  let newUsers: number = 0;
+  let existUsers: number = 0;
+  const repository = AppDataSource.getRepository(User);
 
-  await Promise.all(defaultGroups.map(async (group) => {
+  await Promise.all(defaultUsers.map(async (user) => {
     const exists = await repository.findOne({
-      where: { id: group.id },
+      where: { email: user.email },
     });
 
     if (!exists) {
-      const newGroup: GroupInterface = await repository.save(repository.create(group));
-      newGroups.push(newGroup);
+      await repository.save(repository.create(user));
+      newUsers++;
+    } else {
+      existUsers++;
     }
   }));
 
   return new Response(JSON.stringify({
-    newGroups,
+    newUsers,
+    existUsers,
   }), {
     status: 201,
     headers: {
