@@ -17,7 +17,7 @@ export const getGroupsDb = async (): Promise<GroupInterface[]> => {
  * Добавление группы
  * @returns  Promise<GroupInterface>
  */
-export const addGroupsDb = async (groupFields: Omit<GroupInterface, 'id'>): Promise<GroupInterface> => {
+export const addGroupDb = async (groupFields: Omit<GroupInterface, 'id'>): Promise<GroupInterface> => {
   const group = new Group();
   const newGroup = await groupRepository.save({
     ...group,
