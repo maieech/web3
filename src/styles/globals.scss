@@ -79,24 +79,20 @@ input, select {
   font-weight: 500;
 }
 
-input, select {
-  font-size: 18px;
-}
 
 @mixin commons {
   color: var(--item-color);
   font-weight: 500;
 }
 
-input {
+input, select {
   padding: 10px;
   border-radius: 10px;
   border: var(--color) solid 1px;
   
-
   @media #{main.$mob} {
     font-size: main.vwMax(14px);
-    padding: main.vwMax(10px);
+    padding: main.vwMax(5px);
     border-radius: main.vwMax(10px);
   }
 }
@@ -114,8 +110,8 @@ button {
   transition: opacity 0.2s ease;
 
   @media #{main.$mob} {
-    font-size: main.vwMax(14px);
-    padding: main.vwMax(10px);
+    font-size: main.vwMax(10px);
+    padding: main.vwMax(5px);
     border-radius: main.vwMax(10px);
   }
 
