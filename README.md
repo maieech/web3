@@ -9,6 +9,13 @@
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```
 
+Установка npm пакетов:
+
+```
+npm i
+```
+
+
 Запустить проект:
 
 ```
