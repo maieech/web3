@@ -15,8 +15,11 @@ const AppDataSource = new DataSource({
 // and "synchronize" database schema, call "initialize()" method of a newly created database
 // once in your application bootstrap
 export const dbInit = async (): Promise<void> => {
-  console.log('>>> AppDataSource.initialize 0');
   try {
+    if (AppDataSource.isInitialized) {
+      console.log('>>> AppDataSource.isInitialized');
+      return;
+    }
     await AppDataSource.initialize();
     console.log('>>> AppDataSource.initialize');
   }
