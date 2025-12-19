@@ -68,6 +68,13 @@ export default [
       // Possible Errors
       "no-console": "off", //  or "error" depending on your preference
 
+      "space-before-function-paren": ["error", {
+        "anonymous": "always",
+        "named": "always",
+        "asyncArrow": "off",
+        "catch": "always"
+      }],
+
       // Best Practices
       eqeqeq: "error", // Enforce strict equality === and !==
       "no-unused-vars": "warn", // Or "error"
