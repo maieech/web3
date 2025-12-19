@@ -70,6 +70,8 @@ http://localhost:3000/api/groups - апи
 - ### [HTTP запросы](docs/http.md)
 - ### [GIT](docs/git.md)
 
+## SSR - Server Side Rendering, передача состояния на клиент
+[читать по ссылке](docs/ssr.md)
 
 
 ## Ссылки
