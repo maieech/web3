@@ -3,16 +3,16 @@
   display: flex;
   // height: 50px;
   // width: 500px;
-  background-color: var(--gray);
+  background-color: var(--background2);
   justify-content: flex-start;
   gap: 20px;
   align-items: center;
   font-size: 16px;
   font-family: 'PTSans';
   // text-transform: uppercase;
-  color: var(--dark-light);
+  color: var(--color);
   a {
-    color: var(--dark-light);
+    color: var(--color);
   }
 }
 

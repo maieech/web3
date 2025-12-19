@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Main = ({ children }: Props): JSX.Element => (
-  <div className={styles.main}>
+  <div className={styles.Main}>
     {children}
   </div>
 );

@@ -1,10 +1,21 @@
-:root {
-  --white: #FFF;
-  --gray: #E1E1E1;
-  --dark: #272727;
-  --dark-light: #434343;  
-  --green: #72c81e;
+:root {  
+  --color: #272727;
+  --color2: #FFF;
+  --background: #FFF;
+  --background2: #E1E1E1;
+  --background3: #434343;  
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // --color: #d8d8d8;
+    // --color2: #000;
+    // --background: #000;
+    // --background2: #1E1E1E;
+    // --background3: #BABABA;
+  }
+}
+
 
 @font-face {
   font-family: 'PTSans';
@@ -42,4 +53,7 @@
 
 body {
   margin: 0;
+  font-family: PTSans;
+  color: var(--color);
+  background-color: var(--background);
 }

@@ -1,14 +1,14 @@
-// @import "../../../styles/main";
+@use '../../../styles/main';
+@use '../../../styles/typography';
+
 
 .Footer {
-  height: 50px;
-  background-color: var(--dark-light);
-  color: var(--white);
+  height: 70px;
+  background-color: var(--background3);
+  color: var(--color2);
   align-items: center;
   display: flex;
-
+  justify-content: center;
+  padding: 0 main.$webSidePadding;
 }
 
-.content {
-  
-}
