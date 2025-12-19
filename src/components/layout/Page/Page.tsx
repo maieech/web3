@@ -1,4 +1,4 @@
-import ChildrenType from '@/types/ChildrenType';
+import type ChildrenType from '@/types/ChildrenType';
 
 import styles from './Page.module.scss';
 

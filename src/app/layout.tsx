@@ -3,7 +3,7 @@ import { dehydrate } from '@tanstack/react-query';
 import TanStackQuery from '@/containers/TanStackQuery';
 import queryClient from '@/api/reactQueryClient';
 import { getGroupsApi } from '@/api/groupsApi';
-import GroupInterface from '@/types/GroupInterface';
+import type GroupInterface from '@/types/GroupInterface';
 import Header from '@/components/layout/Header/Header';
 import Footer from '@/components/layout/Footer/Footer';
 import Main from '@/components/layout/Main/Main';
@@ -17,17 +17,18 @@ export const metadata: Metadata = {
   description: 'Шаблон для веб-разработки с использованием Next.js, React Hook Form, Yup, SCSS, Eslint, TanStack Query (React Query)',
 };
 
-const RootLayout = async ({ children }: Readonly<{children: React.ReactNode}>) => {  
+const RootLayout = async({ children }: Readonly<{ children: React.ReactNode }>): Promise<React.ReactElement> => {
   let groups: GroupInterface[];
 
   // выполняется на сервере - загрузка групп
   await queryClient.prefetchQuery({
-    queryKey: ['groups'], 
-    queryFn: async () => {
+    queryKey: ['groups'],
+    queryFn: async() => {
+      // eslint-disable-next-line @typescript-eslint/await-thenable
       groups = await getGroupsApi();
       console.log('Groups', groups);
       return groups;
-    }
+    },
   });
 
   const state = dehydrate(queryClient, { shouldDehydrateQuery: () => true });

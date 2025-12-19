@@ -1,5 +1,5 @@
 interface GroupInterface {
-  name: string,
+  name: string;
 };
 
 export default GroupInterface;

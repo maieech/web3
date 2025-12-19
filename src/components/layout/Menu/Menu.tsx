@@ -1,10 +1,8 @@
 'use client';
- 
+
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-
 import styles from './Menu.module.scss';
-
 
 const Menu = (): React.ReactElement => {
   const pathname = usePathname ();

@@ -1,13 +1,11 @@
 import { getGroupsDb } from '@/db/groupDb';
 
-export async function GET() {
-
+export function GET(): Response {
   const groups = getGroupsDb();
 
   return new Response(JSON.stringify(groups), {
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
   });
 };
-

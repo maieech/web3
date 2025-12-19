@@ -1,6 +1,5 @@
 import Page from '@/components/layout/Page/Page';
 
-
 const HomePage = (): React.ReactNode => {
   return (
     <Page>
