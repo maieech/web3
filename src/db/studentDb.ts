@@ -16,7 +16,7 @@ export const getStudentsDb = async (): Promise<StudentInterface[]> => {
 /**
  * Удаления студента
  * @param studentId ИД удаляемого студента
- * @returns
+ * @returns Promise<number>
  */
 export const deleteStudentDb = async (studentId: number): Promise<number> => {
   await studentRepository.delete(studentId);
@@ -26,7 +26,7 @@ export const deleteStudentDb = async (studentId: number): Promise<number> => {
 /**
  * Добавление студента
  * @param studentField поля студента
- * @returns
+ * @returns Promise<StudentInterface>
  */
 export const addStudentDb = async (studentFields: Omit<StudentInterface, 'id'>): Promise<StudentInterface> => {
   const student = new Student();
@@ -38,7 +38,9 @@ export const addStudentDb = async (studentFields: Omit<StudentInterface, 'id'>):
 };
 
 /**
- * Добавление  рандомных студента
+ * Добавление рандомных студента
+ * @param amount количество рандомных записей
+ * @returns Promise<StudentInterface>
  */
 export const addRandomStudentsDb = async (amount: number = 10): Promise<StudentInterface[]> => {
   const students: StudentInterface[] = [];
