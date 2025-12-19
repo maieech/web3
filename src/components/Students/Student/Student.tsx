@@ -15,7 +15,7 @@ const Student = ({ student, onDelete }: Props): React.ReactElement => {
 
   return (
     <div className={`${styles.Student} ${styles[modifier]}`}>
-      {`${student.id || 'xxxx'} - ${student.lastName} ${student.firstName} ${student.middleName}`}
+      {`${student.id || 'xxxx'} - ${student.lastName} ${student.firstName} ${student.middleName} (${student?.group?.name})`}
       <button onClick={onDeleteHandler}>Удалить</button>
     </div>
   );

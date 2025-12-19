@@ -9,7 +9,8 @@ const groupRepository = AppDataSource.getRepository(Group);
  * @returns  Promise<GroupInterface[]>
  */
 export const getGroupsDb = async (): Promise<GroupInterface[]> => {
-  return await groupRepository.find();
+  const groups = await groupRepository.find({ relations: ['students'] });
+  return groups as GroupInterface[];
 };
 
 /**

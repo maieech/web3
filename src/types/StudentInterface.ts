@@ -1,3 +1,5 @@
+import type GroupInterface from './GroupInterface';
+
 interface StudentInterface {
   id: number;
   uuid?: string;
@@ -8,6 +10,7 @@ interface StudentInterface {
   groupId: number;
   isDeleted?: boolean;
   isNew?: boolean;
+  group?: GroupInterface;
 };
 
 export default StudentInterface;

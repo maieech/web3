@@ -18,7 +18,7 @@ const useStudents = (): StudentsHookInterface => {
   const { data, refetch } = useQuery({
     queryKey: ['students'],
     queryFn: () => getStudentsApi(),
-    enabled: false,
+    enabled: true,
   });
 
   /**
@@ -69,6 +69,9 @@ const useStudents = (): StudentsHookInterface => {
       }
       const updatedStudents = previousStudents.filter((student: StudentInterface) => student.id !== studentId);
       queryClient.setQueryData<StudentInterface[]>(['students'], updatedStudents);
+
+      // обновляем кэш групп так как обновились студенты в группе
+      queryClient.invalidateQueries({ queryKey: ['groups'] });
     },
     // onSettled: (data, error, variables, context) => {
     //   // вызывается после выполнения запроса в случаи удачи или ошибке
@@ -102,8 +105,10 @@ const useStudents = (): StudentsHookInterface => {
       queryClient.setQueryData<StudentInterface[]>(['students'], context?.previousStudents);
     },
     // обновляем данные в случаи успешного выполнения mutationFn: async (student: StudentInterface) => addStudentApi(student)
-    onSuccess: async (newStudent, variables, { previousStudents }) => {
+    onSuccess: async (newStudent, variables, { previousStudents, updatedStudents }) => {
       refetch();
+      // обновляем кэш групп так как обновились студенты в группе
+      queryClient.invalidateQueries({ queryKey: ['groups'] });
       // await queryClient.cancelQueries({ queryKey: ['students'] });
 
       // if (!previousStudents) {
@@ -111,8 +116,10 @@ const useStudents = (): StudentsHookInterface => {
       //   return;
       // }
 
-      // const updatedStudents = [...previousStudents.filter(s => s.id !== -1), newStudent];
-      // queryClient.setQueryData<StudentInterface[]>(['students'], updatedStudents);
+      // const updatedStudentsNew = updatedStudents.map((student: StudentInterface) => ({
+      //   ...(student.uuid === newStudent.uuid ? newStudent : student),
+      // }));
+      // queryClient.setQueryData<StudentInterface[]>(['students'], updatedStudentsNew);
     },
   });
 
